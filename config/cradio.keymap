@@ -24,7 +24,7 @@
         compatible = "zmk,combos";
         COMBO(Z, &kp Z, 0 1)
         COMBO(Q, &kp Q, 1 2)
-        COMBO(showallwin, &kp C_AC_DESKTOP_SHOW_ALL_WINDOWS, 1 3)
+        COMBO(capsword, &caps_word, 1 3)
 
         COMBO(tmux, &kp LC(B), 11 13)
         COMBO(paste, &kp LG(V), 21 22)
