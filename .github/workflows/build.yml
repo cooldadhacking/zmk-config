@@ -2,4 +2,7 @@ on: [push, pull_request, workflow_dispatch]
 
 jobs:
   build:
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    # Pinned to a pre-Zephyr-4.1 commit (2025-11-17). ZMK main moved to the
+    # board-variant scheme on 2025-12-09, which breaks the older urob/zmk fork
+    # this config tracks (KeyError: 'qualifiers'). Unpin once the fork updates.
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@e34793e8c7193bc868b95ec38d78f67956f759cb
