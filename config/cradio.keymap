@@ -14,6 +14,7 @@
 #define COMBO(NAME, BINDINGS, KEYPOS) \
   combo_##NAME { \
     timeout-ms = <50>; \
+    require-prior-idle-ms = <150>; \
     bindings = <BINDINGS>; \
     key-positions = <KEYPOS>; \
     layers = <0>; \
@@ -27,25 +28,30 @@
         COMBO(capsword, &caps_word, 1 3)
 
         COMBO(tmux, &kp LC(B), 11 13)
-        COMBO(paste, &kp LG(V), 21 22)
-        COMBO(undo, &kp LG(Z), 20 21) 
+        COMBO(tmux2, &kp LC(B), 16 18)
+        COMBO(copy, &kp LG(C), 21 22)
+        COMBO(paste, &kp LG(V), 27 28)
+        COMBO(undo, &kp LG(Z), 26 27)
+        COMBO(cut, &kp LG(X), 20 21)
         COMBO(backslash, &kp BSLH, 28 29)
 
         COMBO(esckey, &kp ESC, 2 3)
+        COMBO(esckey2, &kp ESC, 6 7)
         COMBO(tabkey, &kp TAB, 12 13)
+        COMBO(tabkey2, &kp TAB, 16 17)
         COMBO(space, &kp SPACE, 22 23)
         COMBO(enter, &kp RET, 21 23)
         
-        COMBO(one, &kp N1, 0 10)
-        COMBO(two, &kp N2, 1 11)
-        COMBO(three, &kp N3, 2 12)
-        COMBO(four, &kp N4, 3 13)
-        COMBO(five, &kp N5, 4 14)
-        COMBO(six, &kp N6, 5 15)
-        COMBO(seven, &kp N7, 6 16)
-        COMBO(eight, &kp N8, 7 17)
-        COMBO(nine, &kp N9, 8 18)
-        COMBO(zero, &kp N0, 9 19)
+        COMBO(one, &kp LC(N1), 0 10)
+        COMBO(two, &kp LC(N2), 1 11)
+        COMBO(three, &kp LC(N3), 2 12)
+        COMBO(four, &kp LC(N4), 3 13)
+        COMBO(five, &kp LC(N5), 4 14)
+        COMBO(six, &kp LC(N6), 5 15)
+        COMBO(seven, &kp LC(N7), 6 16)
+        COMBO(eight, &kp LC(N8), 7 17)
+        COMBO(nine, &kp LC(N9), 8 18)
+        COMBO(zero, &kp LC(N0), 9 19)
 
         // COMBO(ctrlL, &kp LC(LEFT), 10 11)
         // COMBO(ctrlR, &kp LC(RIGHT), 11 12)
@@ -109,8 +115,8 @@
         //│ ESC      │  4       │  5       │  6       │          │   │ LEFT     │ DOWN     │ UP       │ RIGHT    │  ;       │
             &kp ESC    &kp N4     &kp N5     &kp N6     &mkp MB1       &kp LARW   &kp DARW   &kp UARW   &kp RARW   &kp SEMI
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│ CAPS     │  7       │  8       │  9       │  0       │   │          │          │          │          │          │
-           &caps_word  &kp N7     &kp N8     &kp N9     &kp N0         &trans      &trans      &trans    &trans    &trans
+        //│ CAPS     │  7       │  8       │  9       │  0       │   │ DEL      │          │          │          │          │
+           &caps_word  &kp N7     &kp N8     &kp N9     &kp N0         &kp DEL    &trans     &trans    &trans     &trans
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
                                              &trans     &kp ESC        &trans     &trans
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
@@ -137,14 +143,14 @@
         tri_layer {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│ RESET    │          │          │          │PROFILE 0 │   │          │          │          │          │  RESET   │
-           &sys_reset  &trans     &trans     &trans    &bt BT_SEL 0    &trans     &trans     &trans     &trans    &sys_reset
+        //│ RESET    │          │          │          │PROFILE 0 │   │  F1      │  F2      │  F3      │  F4      │  RESET   │
+           &sys_reset  &trans     &trans     &trans    &bt BT_SEL 0    &kp F1     &kp F2     &kp F3     &kp F4    &sys_reset
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│BOOTLOADER│          │          │          │PROFILE 1 │   │          │          │          │          │BOOTLOADER│
-          &bootloader  &trans     &trans     &trans    &bt BT_SEL 1    &trans     &trans     &trans     &trans    &bootloader
+        //│BOOTLOADER│          │          │          │PROFILE 1 │   │  F5      │  F6      │  F7      │  F8      │BOOTLOADER│
+          &bootloader  &trans     &trans     &trans    &bt BT_SEL 1    &kp F5     &kp F6     &kp F7     &kp F8    &bootloader
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│          │          │          │ CLEAR BT │PROFILE 2 │   │          │          │          │          │          │
-            &trans     &trans     &trans    &bt BT_CLR &bt BT_SEL 2    &trans     &trans     &trans     &trans     &trans
+        //│          │          │          │ CLEAR BT │PROFILE 2 │   │  F9      │  F10     │  F11     │  F12     │          │
+            &trans     &trans     &trans    &bt BT_CLR &bt BT_SEL 2    &kp F9     &kp F10    &kp F11    &kp F12    &trans
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
                                              &trans     &trans         &trans     &trans
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
