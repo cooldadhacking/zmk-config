@@ -1,0 +1,15 @@
+# Copyright (c) 2026 The ZMK Contributors
+# SPDX-License-Identifier: MIT
+
+description: Mock word behavior (random capitalization, SpongeBob-style)
+
+compatible: "zmk,behavior-mock-word"
+
+include: zero_param.yaml
+
+properties:
+  continue-list:
+    type: array
+    required: true
+  mods:
+    type: int

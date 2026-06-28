@@ -75,6 +75,14 @@
             global-quick-tap;
             bindings = <&kp>, <&kp>;
         };
+
+        // SpongeBob random-caps mode. Toggle on, type, toggle off. SPACE is in
+        // the continue-list so it mocks whole sentences; ends on enter/punct.
+        mock_word: mock_word {
+            compatible = "zmk,behavior-mock-word";
+            #binding-cells = <0>;
+            continue-list = <UNDERSCORE BACKSPACE DELETE MINUS SPACE>;
+        };
     };
 
     conditional_layers {
@@ -115,8 +123,8 @@
         //│ ESC      │  4       │  5       │  6       │          │   │ LEFT     │ DOWN     │ UP       │ RIGHT    │  ;       │
             &kp ESC    &kp N4     &kp N5     &kp N6     &mkp MB1       &kp LARW   &kp DARW   &kp UARW   &kp RARW   &kp SEMI
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│ CAPS     │  7       │  8       │  9       │  0       │   │ DEL      │          │          │          │          │
-           &caps_word  &kp N7     &kp N8     &kp N9     &kp N0         &kp DEL    &trans     &trans    &trans     &trans
+        //│ CAPS     │  7       │  8       │  9       │  0       │   │ DEL      │          │ MOCK     │          │          │
+           &caps_word  &kp N7     &kp N8     &kp N9     &kp N0         &kp DEL    &trans   &mock_word   &trans     &trans
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
                                              &trans     &kp ESC        &trans     &trans
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯

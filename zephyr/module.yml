@@ -1,0 +1,5 @@
+name: zmk-mock-word
+build:
+  cmake: .
+settings:
+  dts_root: .
