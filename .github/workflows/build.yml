@@ -2,4 +2,7 @@ on: [push, pull_request, workflow_dispatch]
 
 jobs:
   build:
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    # Pinned to the v0.3.0 release (Aug 2025): has upstream mouse/pointing
+    # support, predates the Zephyr 4.1 board-variant migration (Dec 2025).
+    # Source (west.yml) is pinned to the same tag to keep them in lockstep.
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3.0
