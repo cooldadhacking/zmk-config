@@ -30,10 +30,11 @@
         COMBO(tmux, &kp LC(B), 11 13)
         COMBO(tmux2, &kp LC(B), 16 18)
         COMBO(copy, &kp LG(C), 21 22)
-        COMBO(paste, &kp LG(V), 27 28)
+        COMBO(paste, &kp LG(V), 20 21)
         COMBO(undo, &kp LG(Z), 26 27)
-        COMBO(cut, &kp LG(X), 20 21)
+        COMBO(cut, &kp LG(X), 27 28)
         COMBO(backslash, &kp BSLH, 28 29)
+        COMBO(bspc, &kp BSPC, 26 28)
 
         COMBO(esckey, &kp ESC, 2 3)
         COMBO(esckey2, &kp ESC, 6 7)
@@ -109,7 +110,7 @@
         //│  F       │  P       │  L       │  D       │  V       │   │  -       │  U       │  O       │    Y     │   B      │
             &kp F      &kp P      &kp L      &kp D      &kp V          &kp MINUS  &kp U      &kp O        &kp Y      &kp B
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                            &lt 2 BSPC  &lt 2 R        &lt 1 SPACE &lt 1 ENTER
+                                            &lt 2 C_VOL_DN &lt 2 R      &lt 1 SPACE  &lt 1 C_VOL_UP
         //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
             >;
         };
@@ -134,8 +135,8 @@
         left_layer {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│ VOLDN    │  [       │  {       │  }       │  VOLUP   │   │  ^       │  (       │  )       │  ]       │  ~       │
-            &kp C_VOL_DN &kp LBKT  &kp LBRC  &kp RBRC   &kp C_VOL_UP   &kp CARET  &kp LPAR   &kp RPAR   &kp RBKT   &kp TILDE
+        //│ DEL      │  [       │  {       │  }       │  MUTE    │   │  ^       │  (       │  )       │  ]       │  ~       │
+            &kp DEL    &kp LBKT  &kp LBRC  &kp RBRC   &kp C_MUTE     &kp CARET  &kp LPAR   &kp RPAR   &kp RBKT   &kp TILDE
         //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  !       │  @       │  #       │  $       │  %       │   │  *       │  -       │  =       │  \       │  `       │
             &kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT      &kp ASTRK  &kp MINUS  &kp EQUAL  &kp BSLH   &kp GRAVE
